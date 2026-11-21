@@ -80,6 +80,8 @@ CareerConnect/
 ```
 ## 📸 Project Screenshots
 
+## 📸 Project Screenshots
+
 ### Home Page
 ![CareerConnect Home Page](screenshots/home-hero.png)
 
