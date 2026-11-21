@@ -1405,7 +1405,7 @@ const unreadCount = notifications.filter(
               </div>
             </div>
             <div className="cc-home-hero-photo">
-              <img src="/careerconnect-team.png" alt="Students collaborating on a laptop in a modern workplace" fetchPriority="high" />
+              <img src={`${import.meta.env.BASE_URL}careerconnect-team.png`} alt="Students collaborating on a laptop in a modern workplace" fetchPriority="high" />
               <div className="cc-home-photo-accent" />
             </div>
           </section>
@@ -1458,7 +1458,7 @@ const unreadCount = notifications.filter(
               <div className="cc-about-hero-note"><span>✦</span> One platform. New possibilities.</div>
             </div>
             <div className="cc-about-hero-visual">
-              <img src="/about-team.png" alt="CareerConnect team collaborating in a modern office" />
+              <img src={`${import.meta.env.BASE_URL}about-team.png`} alt="CareerConnect team collaborating in a modern office" />
               <div className="cc-about-image-caption"><strong>Build your next chapter</strong><span>Discover. Connect. Grow.</span></div>
             </div>
           </section>
@@ -2415,7 +2415,7 @@ const unreadCount = notifications.filter(
       {page === 'register' && (
         <section className="auth-page cc-login-page cc-register-page">
           <div className="cc-login-visual cc-register-visual">
-            <img className="cc-login-photo" src="/register-career-journey.png" alt="A student beginning her career journey in a modern workspace" />
+            <img className="cc-login-photo" src={`${import.meta.env.BASE_URL}register-career-journey.png`} alt="A student beginning her career journey in a modern workspace" />
             <div className="cc-login-photo-shade" />
             <div className="cc-login-visual-content">
               <span className="cc-login-eyebrow"><span className="cc-login-eyebrow-dot" /> YOUR NEXT CHAPTER STARTS HERE</span>
