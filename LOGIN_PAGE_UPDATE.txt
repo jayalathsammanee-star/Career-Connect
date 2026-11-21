@@ -1,0 +1,19 @@
+CareerConnect Login Page Update
+
+This update changes the login page UI only. The existing handleLogin function,
+API endpoint, email/password state, role handling, and database/backend code are
+left unchanged.
+
+To use:
+1. Back up your current CareerConnect folder.
+2. Extract this ZIP to a new folder.
+3. Copy your existing backend/.env file into the extracted backend folder.
+   Do not share the .env file publicly.
+4. Keep using your existing MySQL database; do not recreate it.
+5. In the project root terminal, run: npm.cmd install
+6. In a second terminal, run: cd backend && npm.cmd install
+7. Start backend: node server.js
+8. Start frontend in the root terminal: npm.cmd run dev
+
+The login form still authenticates through the existing backend API. No
+forgot-password workflow or extra authentication feature has been added.

@@ -1,0 +1,20 @@
+CareerConnect mobile layout update
+
+Changes:
+- Made the public Browse Internships listing use an explicit CSS Grid layout.
+- Kept the existing three-column desktop and two-column tablet layouts.
+- Set phone layouts (640px and below) to one internship card per row.
+- Stacked Save / View details / Apply Now actions on phones so every button fits.
+- Kept existing React components, API calls, routes, and backend logic unchanged.
+
+Setup:
+1. Extract this ZIP into a new folder.
+2. Copy your existing backend/.env file from your previous project backup into this project's backend folder.
+   The .env file is intentionally not included in this ZIP because it contains private database credentials.
+3. Open a terminal in the project root and run: npm install
+4. Open a second terminal in backend and run: npm install
+5. Start the backend using your existing backend start command (for example: node server.js).
+6. In the project root, run: npm run dev
+
+The existing dist and node_modules folders are not included; they are generated/install folders.
+The source code and project assets are included.
