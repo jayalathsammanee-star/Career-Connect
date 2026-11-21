@@ -1,40 +1,151 @@
-# CareerConnect – Updated Workspace Build
+# CareerConnect – Full-Stack Internship Management Platform
 
-## What's included
-- Existing Student and Company workspaces retained.
-- Student saved internships persisted in MySQL.
-- Student and Company notification center support.
-- Company receives a notification when a student submits an application.
-- Admin overview with student, company, internship and application totals, plus recent accounts.
-- Signed 8-hour login tokens for private API requests.
-- API role and account-ownership checks for student/company workspace routes.
-- Basic security headers, request JSON size limit, and configurable CORS origins.
-- Existing search filters, application workflow, profile/photo/logo uploads, CV handling and dashboard styling retained.
+CareerConnect is a full-stack web application designed to connect students seeking internship opportunities with companies offering internships.
 
-## Frontend
-From the project root:
-1. `npm install`
-2. `npm run dev`
+The platform provides separate workspaces for students and companies, making internship discovery, applications, and recruitment management easier.
 
-## Backend
+## 🚀 Key Features
+
+### 👨‍🎓 Student Features
+- Student registration and login
+- Browse and search internship opportunities
+- Filter internships
+- View internship details
+- Apply for internships
+- Upload and manage CVs
+- Upload profile photos
+- Track submitted applications
+- Receive notifications
+
+### 🏢 Company Features
+- Company registration and login
+- Create and manage internship postings
+- View received applications
+- Download student CVs
+- Review applicant information
+- Receive application notifications
+- Manage company profiles and logos
+
+### 🔐 Additional Features
+- Role-based authentication
+- Protected dashboard routes
+- Application management
+- MySQL database integration
+- Responsive user interface
+
+## 🛠️ Technologies Used
+
+**Frontend**
+- React.js
+- Vite
+- JavaScript
+- HTML5
+- CSS3
+
+**Backend**
+- Node.js
+- Express.js
+- REST API
+
+**Database**
+- MySQL
+
+**Development Tools**
+- Visual Studio Code
+- Git
+- GitHub
+
+## 📁 Project Structure
+
+```text
+CareerConnect/
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   └── .env.example
+│
+├── public/
+├── src/
+│   ├── assets/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+│
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## ⚙️ Installation and Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/jayalathsammanee-star/Career-Connect.git
+```
+
+### 2. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 3. Install Backend Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Inside the `backend` folder, create a `.env` file using `.env.example` as a reference.
+
+Configure the required database connection settings and authentication secret.
+
+Do not upload your actual `.env` file to GitHub.
+
+### 5. Configure MySQL Database
+
+Create the required MySQL database and import the project's database SQL files.
+
+Update the database connection settings in the backend environment file.
+
+### 6. Run the Backend
+
 From the `backend` folder:
-1. Copy `.env.example` to `.env`.
-2. Set `DB_HOST`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME`.
-3. Set `AUTH_SECRET` to a long, random secret (do not use the example value in production).
-4. Set `CLIENT_ORIGIN` to the exact frontend origin(s).
-5. `npm install`
-6. `node server.js`
 
-The backend creates the `saved_internships` table automatically. The SQL is also supplied in `database-updates.sql`.
+```bash
+node server.js
+```
 
-## Administrator account
-Public registration intentionally only allows Student and Company accounts.
-To grant admin access to an existing account, run this manually in MySQL after replacing the email:
-`ALTER TABLE users MODIFY role VARCHAR(20) NOT NULL;`\n`UPDATE users SET role = 'admin' WHERE email = 'your-admin-email@example.com';`
-Then log out and log back in. Admin dashboard appears for that account.
+### 7. Run the Frontend
 
-## Important security note
-This update adds signed bearer tokens and API role/ownership checks. Before deploying publicly, use a unique strong `AUTH_SECRET`, HTTPS, production CORS origins, database least-privilege credentials, regular backups, and test all access-control paths. A full production security review (including rate limiting, password-reset flows, email verification, audit logging, and file malware scanning) is still recommended.
+Open another terminal at the project root:
 
-## Data and privacy
-The supplied ZIP is built from the uploaded project. It deliberately excludes the private `.env` file and private CV documents. Keep your original `.env` and `backend/private-cvs` folder in a safe backup; do not share them publicly. Publicly served uploaded logos/profile photos remain in `backend/uploads`.
+```bash
+npm run dev
+```
+
+Open the local URL displayed by Vite in your browser.
+
+## 🎯 Project Objective
+
+The main objective of CareerConnect is to provide a centralized platform where students can discover internship opportunities and companies can manage their recruitment process efficiently.
+
+## 👨‍💻 Developer
+
+**Sammani Jayalath**
+
+BSc (Hons) Computer Science Undergraduate
+
+South Eastern University of Sri Lanka
+
+GitHub: [jayalathsammanee-star](https://github.com/jayalathsammanee-star)
+
+---
+
+*CareerConnect – Connecting Students with Opportunities.*
