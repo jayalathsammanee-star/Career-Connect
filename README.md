@@ -78,6 +78,16 @@ CareerConnect/
 ├── vite.config.js
 └── README.md
 ```
+## 📸 Project Screenshots
+
+### Home Page
+![CareerConnect Home Page](screenshots/home-hero.png)
+
+### Featured Internships
+![Featured Internships](screenshots/featured-internships.png)
+
+### Home Page Footer
+![CareerConnect Footer](screenshots/home-footer.png)
 
 ## ⚙️ Installation and Setup
 
