@@ -2109,7 +2109,7 @@ textarea:focus-visible { outline: 3px solid rgba(37,99,235,.22); outline-offset:
 .cc-browse-results-row > p strong { color:#14385f; font-size:14px; }
 .cc-browse-sort { display:flex; align-items:center; gap:9px; }
 .cc-browse-sort select { width:auto; min-width:135px; min-height:36px; padding:0 28px 0 10px; font-size:10px; }
-.cc-browse-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; width:100%; min-width:0; }
+.cc-browse-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
 .cc-browse-grid .internship-card {
   display:flex; flex-direction:column; align-items:stretch; gap:0; padding:0;
   min-height:100%; overflow:hidden; border:1px solid #e3eaf4; border-radius:17px;
@@ -2903,59 +2903,22 @@ textarea:focus-visible { outline: 3px solid rgba(37,99,235,.22); outline-offset:
 }
 
 
-
-
 /* =========================================================
-   CareerConnect: reliable mobile internship cards
-   Desktop/tablet retain the existing multi-column design.
-   Phones use one card per row and full-width action buttons.
+   Mobile browse-internships layout fix
+   Keep desktop grid unchanged; prevent card actions overflowing
+   on narrow phone screens.
    ========================================================= */
-.cc-browse-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: 100%;
-  min-width: 0;
-}
-
-.cc-browse-grid > .internship-card {
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-.cc-browse-grid .internship-card-actions {
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 9px;
-  min-width: 0;
-}
-
-.cc-browse-grid .internship-card-actions > button {
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-@media (max-width: 1100px) {
-  .cc-browse-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
   .cc-browse-grid,
-  .internship-list.public-internship-list.browse-internship-grid.cc-browse-grid {
+  .browse-internship-grid,
+  .public-internship-list {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 16px !important;
     width: 100% !important;
     max-width: 100% !important;
-    min-width: 0 !important;
+    gap: 16px !important;
   }
 
-  .cc-browse-grid > .internship-card,
   .cc-browse-grid .internship-card {
     display: flex !important;
     flex-direction: column !important;
@@ -2963,26 +2926,22 @@ textarea:focus-visible { outline: 3px solid rgba(37,99,235,.22); outline-offset:
     min-width: 0 !important;
     max-width: 100% !important;
     padding: 0 !important;
-    box-sizing: border-box !important;
     overflow: hidden !important;
   }
 
   .cc-browse-grid .company-avatar.internship-image {
-    display: block !important;
-    flex: 0 0 auto !important;
     width: 100% !important;
     min-width: 0 !important;
     height: 180px !important;
+    flex: 0 0 180px !important;
   }
 
   .cc-browse-grid .internship-card-body {
     display: flex !important;
-    flex: 1 1 auto !important;
     flex-direction: column !important;
     width: 100% !important;
     min-width: 0 !important;
     padding: 15px !important;
-    box-sizing: border-box !important;
   }
 
   .cc-browse-grid .internship-card-heading {
@@ -2995,53 +2954,138 @@ textarea:focus-visible { outline: 3px solid rgba(37,99,235,.22); outline-offset:
   }
 
   .cc-browse-grid .internship-card-heading > div {
-    flex: 1 1 auto;
     min-width: 0 !important;
     overflow-wrap: anywhere;
   }
 
   .cc-browse-grid .internship-card-actions,
-  .cc-browse-grid .internship-card-actions.cc-internship-card-actions {
+  .cc-browse-grid .cc-internship-card-actions {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     align-items: stretch !important;
-    justify-content: stretch !important;
     width: 100% !important;
-    min-width: 0 !important;
     gap: 9px !important;
-    margin-top: auto !important;
-    padding-top: 16px !important;
   }
 
-  .cc-browse-grid .internship-card-actions > button,
-  .cc-browse-grid .internship-card-actions > .button-primary,
-  .cc-browse-grid .internship-card-actions > .button-secondary {
+  .cc-browse-grid .internship-card-actions > button {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    min-height: 42px !important;
-    padding: 11px 12px !important;
-    box-sizing: border-box !important;
     white-space: normal !important;
     text-align: center !important;
-    line-height: 1.35 !important;
-    overflow-wrap: anywhere;
+    padding: 11px 8px !important;
+    line-height: 1.3 !important;
+  }
+
+  .cc-browse-grid .internship-card-actions > .button-primary {
+    grid-column: 1 / -1 !important;
+  }
+
+  .cc-browse-grid .internship-card-actions > button span {
+    flex: 0 0 auto;
   }
 }
 
-@media (max-width: 380px) {
+@media screen and (max-width: 380px) {
   .cc-browse-grid .company-avatar.internship-image {
     height: 155px !important;
+    flex-basis: 155px !important;
   }
-
   .cc-browse-grid .internship-card-body {
     padding: 13px !important;
   }
-
   .cc-browse-grid .internship-card-heading {
     flex-direction: column !important;
+  }
+  .cc-browse-grid .internship-card-actions {
+    grid-template-columns: 1fr !important;
+  }
+  .cc-browse-grid .internship-card-actions > .button-primary {
+    grid-column: auto !important;
+  }
+}
+
+/* Avoid horizontal page overflow on small devices. */
+@media screen and (max-width: 640px) {
+  html, body, #root, .app {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .dashboard-content,
+  .public-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* Mobile Browse Internships Fix */
+@media (max-width: 600px) {
+
+  .cc-browse-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+    width: 100%;
+  }
+
+  .cc-browse-grid .internship-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .cc-browse-grid .internship-card-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    gap: 9px;
+  }
+
+  .cc-browse-grid .internship-card-actions button {
+    width: 100% !important;
+    min-width: 0;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}
+
+/* FINAL MOBILE INTERNSHIP CARD FIX */
+@media screen and (max-width: 640px) {
+
+  .internship-list.public-internship-list.browse-internship-grid.cc-browse-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 18px !important;
+  }
+
+  .cc-browse-grid .internship-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .cc-browse-grid .internship-card-body {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .cc-browse-grid .internship-card-actions.cc-internship-card-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .cc-browse-grid .internship-card-actions button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 }

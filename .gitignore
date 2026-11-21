@@ -26,13 +26,5 @@ dist-ssr
 # Private configuration and student documents
 backend/.env
 backend/private-cvs/
-
-# Environment secrets
-.env
-.env.*
-!.env.example
-backend/.env
-
-# Uploaded/private user files
+backend/node_modules/
 backend/uploads/
-backend/private-cvs/
