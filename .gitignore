@@ -25,4 +25,5 @@ dist-ssr
 
 # Private configuration and student documents
 backend/.env
+backend/uploads/
 backend/private-cvs/
