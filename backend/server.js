@@ -1795,7 +1795,7 @@ app.post("/api/student/profile/:userId/cv", (req, res) => {
 // START SERVER
 // =====================================
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 
 // =====================================

@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '${API_BASE_URL}').replace(/\/$/, '');
+const API_URL = `${API_BASE_URL}/api`;
 
 // A curated set of distinct workplace/technology photos. The internship ID
 // keeps each listing's image stable between renders and page visits.
@@ -199,7 +200,7 @@ const unreadCount = notifications.filter(
           cv_path: data.cv_path || '',
           profile_image: data.profile_image || ''
         });
-        setStudentPhotoPreview(data.profile_image ? `http://localhost:5000${data.profile_image}` : '');
+        setStudentPhotoPreview(data.profile_image ? `${API_BASE_URL}${data.profile_image}` : '');
       } catch (error) {
         showMessage(error.message || 'Unable to load student profile.', 'error');
       } finally {
@@ -228,7 +229,7 @@ const unreadCount = notifications.filter(
         setCompanyProfile(data);
         const logoPath = data.logo || '';
         setLogoPreview(logoPath
-          ? (/^https?:\/\//i.test(logoPath) ? logoPath : `http://localhost:5000${logoPath.startsWith('/') ? logoPath : `/${logoPath}`}`)
+          ? (/^https?:\/\//i.test(logoPath) ? logoPath : `${API_BASE_URL}${logoPath.startsWith('/') ? logoPath : `/${logoPath}`}`)
           : '');
       } catch (error) {
         // Avoid interrupting normal workspace navigation if a company profile
@@ -607,7 +608,7 @@ const unreadCount = notifications.filter(
       }
 
       setCompanyProfile((current) => ({ ...current, logo: data.logo }));
-      setLogoPreview(`http://localhost:5000${data.logo}`);
+      setLogoPreview(`${API_BASE_URL}${data.logo}`);
       setLogoFile(null);
       showMessage(data.message || 'Company logo uploaded successfully!', 'success');
     } catch (error) {
@@ -633,7 +634,7 @@ const unreadCount = notifications.filter(
     const logoPath = logoPreview || companyProfile?.logo || '';
     if (!logoPath) return '';
     if (/^https?:\/\//i.test(logoPath)) return logoPath;
-    return `http://localhost:5000${logoPath.startsWith('/') ? logoPath : `/${logoPath}`}`;
+    return `${API_BASE_URL}${logoPath.startsWith('/') ? logoPath : `/${logoPath}`}`;
   };
 
   // Reuse the profile image already saved for this student.
@@ -642,7 +643,7 @@ const unreadCount = notifications.filter(
     if (!imagePath) return '';
     if (/^https?:\/\//i.test(imagePath)) return imagePath;
     const normalizedPath = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-    return `http://localhost:5000${normalizedPath}`;
+    return `${API_BASE_URL}${normalizedPath}`;
   };
 
   const featuredInternships = useMemo(
@@ -715,7 +716,7 @@ const unreadCount = notifications.filter(
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || 'Profile photo upload failed');
       setStudentProfile((current) => ({ ...current, profile_image: data.profile_image }));
-      setStudentPhotoPreview(`http://localhost:5000${data.profile_image}?t=${Date.now()}`);
+      setStudentPhotoPreview(`${API_BASE_URL}${data.profile_image}?t=${Date.now()}`);
       setStudentPhotoFile(null);
       const fileInput = document.getElementById('studentPhotoInput');
       if (fileInput) fileInput.value = '';
@@ -2278,7 +2279,7 @@ const unreadCount = notifications.filter(
               <div className="profile-page-top">
                 <div className="student-profile-photo-wrap">
                   {studentPhotoPreview || studentProfile.profile_image ? (
-                    <img className="student-profile-photo" src={studentPhotoPreview || `http://localhost:5000${studentProfile.profile_image}`} alt="Student profile" />
+                    <img className="student-profile-photo" src={studentPhotoPreview || `${API_BASE_URL}${studentProfile.profile_image}`} alt="Student profile" />
                   ) : (
                     <div className="avatar avatar-large student-profile-photo-fallback">{(studentProfile.full_name || 'S').trim().split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || initials}</div>
                   )}
