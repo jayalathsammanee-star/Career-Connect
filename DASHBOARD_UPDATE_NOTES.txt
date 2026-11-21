@@ -1,0 +1,22 @@
+CareerConnect Student Dashboard Update
+
+The student dashboard has been redesigned to follow the selected navy-blue and cyan reference layout.
+
+Updated:
+- Student dashboard welcome banner and responsive layout
+- Student metrics based on the existing applications and internships data
+- Recent applications list using the existing student applications API
+- Recommended internship cards using the existing internships API
+- Profile completion indicator using the existing student profile API
+- Student workspace sidebar and top search bar
+
+Existing backend routes and application submission workflows were not intentionally changed.
+
+Setup:
+1. Extract the project folder.
+2. In the project root, run: npm install
+3. In backend, create a .env file using backend/.env.example as a template and enter your own MySQL credentials.
+4. In the project root, run: npm run dev
+5. In a second terminal, open backend and run: npm install, then run: node server.js
+
+Note: The uploaded archive contained platform-specific node_modules and local private CV files. They are excluded from this shareable ZIP. Reinstall dependencies on your own computer and keep your local backend/private-cvs folder backed up separately.
